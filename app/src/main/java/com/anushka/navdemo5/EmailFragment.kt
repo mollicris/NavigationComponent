@@ -27,7 +27,8 @@ class EmailFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_email, container, false)
         binding.submitButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_emailFragment_to_welcomeFragment)
+            var bundle:Bundle = bundleOf("input_email" to binding.emailEditText.text.toString())
+            it.findNavController().navigate(R.id.action_emailFragment_to_welcomeFragment,bundle)
         }
         return binding.root
     }

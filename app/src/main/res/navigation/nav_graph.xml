@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_emailFragment"
-            app:destination="@id/emailFragment" />
+            app:destination="@id/emailFragment"
+            app:enterAnim="@anim/push_up_in"
+            app:exitAnim="@anim/push_down_out" />
         <action
             android:id="@+id/action_homeFragment_to_termsFragment"
-            app:destination="@id/termsFragment" />
+            app:destination="@id/termsFragment"
+            app:enterAnim="@anim/push_down_in"
+            app:exitAnim="@anim/push_down_out"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
@@ -24,7 +30,9 @@
         tools:layout="@layout/fragment_email">
         <action
             android:id="@+id/action_emailFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/termsFragment"
@@ -38,6 +46,8 @@
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_termsFragment"
-            app:destination="@id/termsFragment" />
+            app:destination="@id/termsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 </navigation>
