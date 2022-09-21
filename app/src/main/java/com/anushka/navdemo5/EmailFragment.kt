@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.anushka.navdemo5.databinding.FragmentEmailBinding
 import com.anushka.navdemo5.databinding.FragmentNameBinding
+import java.time.Duration
 
 /**
  * A simple [Fragment] subclass.
@@ -27,8 +28,15 @@ class EmailFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_email, container, false)
         binding.submitButton.setOnClickListener {
-            var bundle:Bundle = bundleOf("input_email" to binding.emailEditText.text.toString())
-            it.findNavController().navigate(R.id.action_emailFragment_to_welcomeFragment,bundle)
+            if(!TextUtils.isEmpty( binding.emailEditText.text.toString())) {
+                var bundle: Bundle =
+                    bundleOf("input_email" to binding.emailEditText.text.toString())
+                it.findNavController()
+                    .navigate(R.id.action_emailFragment_to_welcomeFragment, bundle)
+            }else{
+                Toast.makeText(activity,"Ingresar Email",Toast.LENGTH_SHORT).show()
+            }
+
         }
         return binding.root
     }
